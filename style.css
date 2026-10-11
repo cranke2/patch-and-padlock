@@ -15,6 +15,8 @@
 * { box-sizing: border-box; }
 body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; font-size: 17px; }
 body, .top, fieldset, .cta, .hero, .score, details, th, td { transition: background-color .3s ease, color .3s ease, border-color .3s ease; }
+section[id] { scroll-margin-top: 80px; }
+html { scroll-behavior: smooth; }
 .wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
 a { color: var(--accent-text); }
 .top { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 10; }
@@ -81,4 +83,5 @@ th { background: var(--head-bg); color: #fff; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
   .reveal { opacity: 1; transform: none; }
+  html { scroll-behavior: auto; }
 }
