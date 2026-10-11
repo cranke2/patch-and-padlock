@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cranke2.github.io/patch-and-padlock/sitemap.xml

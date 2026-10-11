@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Cyber Essentials Readiness Checker (2026 rules) | Patch &amp; Padlock</title>
+<meta name="description" content="Will your small business pass Cyber Essentials under the April 2026 rules? Answer 20 quick questions to see automatic fails first and get a free action list.">
+<link rel="canonical" href="https://cranke2.github.io/patch-and-padlock/">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="logo" href="./">Patch <span>&amp;</span> Padlock</a><nav><a href="#check">Free checker</a><a href="guides/cyber-essentials-2026-changes.html">2026 changes</a><a href="guides/cyber-essentials-checklist.html">Checklist</a><a class="btn small" href="#kit">Get the kit</a></nav></div></header>
+
+<section class="hero"><div class="wrap">
+  <p class="eyebrow">For UK businesses of 1 to 49 people</p>
+  <h1>Will you pass Cyber Essentials under the 2026 rules?</h1>
+  <p class="lead">Since 27 April 2026, missing MFA on any cloud service or a late security update fails the whole application. Answer 20 quick questions and see where you stand. Free, no sign-up, nothing leaves your browser.</p>
+  <a class="btn" href="#check">Start the free check</a>
+</div></section>
+
+<section id="check" class="wrap card">
+  <h2>Readiness check</h2>
+  <p class="muted">Answer for how things are today, not how you plan them to be. "Not sure" counts as no.</p>
+  <form id="quiz"></form>
+  <button class="btn" id="go" type="button">Show my results</button>
+  <div id="result" hidden></div>
+</section>
+
+<section id="kit" class="wrap kit">
+  <div>
+    <p class="eyebrow">Cyber Essentials Readiness Kit · £19</p>
+    <h2>Do the preparation yourself in an afternoon</h2>
+    <p>Consultants charge £300 to £2,000 to prepare a small firm for Cyber Essentials. This kit gives you the same structure for £19, laid out the way the questions ask for it.</p>
+    <ul class="ticks">
+      <li><b>Readiness workbook</b> (Excel, Google Sheets, LibreOffice): scope, devices, software, cloud services and MFA, accounts, router checks, a 14-day patch log, a 29-point readiness check with automatic-fail flags, and an action plan.</li>
+      <li><b>Plain-English guide</b> to the five controls and the April 2026 changes, with step-by-step settings for Microsoft 365, Google Workspace, Windows and Mac.</li>
+      <li><b>Seven editable policies</b> in Word: information security, acceptable use (including AI tools), passwords and MFA, software updates, joiners and leavers, bring your own device, and incident response.</li>
+    </ul>
+    <a class="btn" href="https://crankster205.gumroad.com/l/cyber-essentials-kit">Get the kit for £19</a>
+    <p class="muted small">One-off payment. Instant download. 30-day refund if it's not for you.</p>
+  </div>
+</section>
+
+<section class="wrap faq">
+  <h2>Questions</h2>
+  <details><summary>Is this the official Cyber Essentials?</summary><p>No. Cyber Essentials is run by IASME for the NCSC, and you apply through a Certification Body. Patch &amp; Padlock isn't linked to either. This kit helps you get ready so you pass first time and only pay the assessment fee.</p></details>
+  <details><summary>What changed in April 2026?</summary><p>The requirements moved to version 3.3 and the "Danzell" question set. MFA must be on for every user of every cloud service that offers it, cloud services can't be left out of scope, and the 14-day update rule now covers vendor-advised configuration fixes too. <a href="guides/cyber-essentials-2026-changes.html">Read the summary</a>.</p></details>
+  <details><summary>Does my small business need it?</summary><p>You need it if a customer, tender or contract asks for it. Central government contracts handling personal data require it. Even if nobody asks, the five controls stop most common attacks.</p></details>
+  <details><summary>Will the kit guarantee a pass?</summary><p>No one can promise that. The kit makes sure you've checked every area the assessor looks at, and flags the automatic fails first.</p></details>
+</section>
+
+<footer class="foot"><div class="wrap">
+  <p>Patch &amp; Padlock makes simple cyber security kits for UK small businesses. We are not a Certification Body and are not linked to the NCSC or IASME. Everything here is general guidance, not professional advice.</p>
+</div></footer>
+
+<script>
+const Q = [
+  ["Do you have a list of every laptop, desktop, phone, tablet and router used for work, including home workers' laptops?", "Scope", 0, "List every device. Anything that connects to the internet is in scope."],
+  ["Do you have a list of every online service you use for work (email, files, accounts, CRM, website admin), including free ones?", "Scope", 1, "List every cloud service. They can't be left out of scope from April 2026."],
+  ["Is multi-factor authentication (MFA) switched on for EVERY user on EVERY one of those services that offers it?", "User access", 1, "Switch on MFA for every user now. Missing it is an automatic fail."],
+  ["Is MFA on for every admin account (Microsoft 365, Google Workspace, website, domain registrar)?", "User access", 1, "Switch on MFA for admins first."],
+  ["Have you changed the default admin password on every internet router?", "Firewalls", 1, "Log in to the router and set a strong, unique password."],
+  ["Is remote (internet-facing) admin turned off on your routers?", "Firewalls", 0, "Turn off WAN or remote administration in the router settings."],
+  ["Is the built-in firewall switched on on every laptop and desktop?", "Firewalls", 0, "Windows Security > Firewall, or Mac System Settings > Network > Firewall."],
+  ["Is every operating system and app still supported by its maker (no Windows 10 without paid extended updates, no old Office, no old phones)?", "Updates", 1, "Upgrade or remove unsupported software. It fails on its own."],
+  ["Are automatic updates switched on for every device and app that offers them?", "Updates", 0, "Turn on automatic updates everywhere."],
+  ["Are critical and high-risk updates (including router firmware) always applied within 14 days?", "Updates", 1, "Check weekly and log critical fixes. Late updates are an automatic fail."],
+  ["Does every device lock with a 6+ digit PIN, a password or biometrics?", "Configuration", 0, "Set screen locks on every device."],
+  ["Are passwords at least 12 characters (or 8 with MFA)?", "Configuration", 0, "Update your password rules and use a password manager."],
+  ["Have unused apps, software and accounts been removed?", "Configuration", 0, "Uninstall unused software and disable old accounts."],
+  ["Does everyone have their own login, with no shared accounts?", "User access", 0, "Replace shared logins with named accounts or shared mailboxes."],
+  ["Are leavers' accounts removed on their last day?", "User access", 0, "Write a leavers checklist and remove old accounts now."],
+  ["Do people who manage IT use a separate admin account, never their everyday one for email or browsing?", "User access", 1, "Create separate admin accounts."],
+  ["Is day-to-day work done from accounts without admin rights?", "User access", 0, "Remove admin rights from everyday accounts."],
+  ["Does every Windows and Mac computer have anti-malware switched on and updating (Microsoft Defender counts)?", "Malware", 1, "Turn on Defender real-time protection, or install anti-malware."],
+  ["Do phones and tablets only install apps from the official app stores?", "Malware", 0, "Block unknown app sources."],
+  ["If staff use their own phones for work email, do those phones meet all of the above?", "Scope", 0, "Bring personal devices up to standard or stop them accessing work data."]
+];
+const form = document.getElementById("quiz");
+Q.forEach((q, i) => {
+  const d = document.createElement("fieldset");
+  d.innerHTML = `<legend><span class="n">${i + 1}</span>${q[0]}${q[2] ? ' <span class="tag">must pass</span>' : ""}</legend>` +
+    ["Yes", "No", "Not sure"].map(v => `<label><input type="radio" name="q${i}" value="${v}"> ${v}</label>`).join("");
+  form.appendChild(d);
+});
+document.getElementById("go").addEventListener("click", () => {
+  const fails = [], fixes = [];
+  let yes = 0, unanswered = 0;
+  Q.forEach((q, i) => {
+    const a = form.querySelector(`input[name=q${i}]:checked`);
+    if (!a) { unanswered++; }
+    if (a && a.value === "Yes") { yes++; return; }
+    (q[2] ? fails : fixes).push(`<li><b>${q[1]}:</b> ${q[3]}</li>`);
+  });
+  const r = document.getElementById("result");
+  let verdict, cls;
+  if (fails.length === 0 && fixes.length === 0) { verdict = "You look ready. Download the current question set and answer it carefully."; cls = "ok"; }
+  else if (fails.length === 0) { verdict = `No automatic fails, but ${fixes.length} thing${fixes.length > 1 ? "s" : ""} to fix first.`; cls = "amber"; }
+  else { verdict = `${fails.length} automatic-fail risk${fails.length > 1 ? "s" : ""}. You'd likely fail if you applied today.`; cls = "red"; }
+  r.innerHTML = `<div class="score ${cls}"><strong>${yes} / ${Q.length}</strong><span>${verdict}</span></div>` +
+    (unanswered ? `<p class="muted">${unanswered} question${unanswered > 1 ? "s" : ""} left blank, counted as not sure.</p>` : "") +
+    (fails.length ? `<h3>Fix these first (automatic fails)</h3><ul>${fails.join("")}</ul>` : "") +
+    (fixes.length ? `<h3>Then these</h3><ul>${fixes.join("")}</ul>` : "") +
+    `<div class="cta"><p>The <b>Readiness Kit</b> turns this into a full workbook with registers, a 14-day patch log, seven ready-made policies and step-by-step settings for Microsoft 365, Google Workspace, Windows and Mac.</p><a class="btn" href="#kit">See the £19 kit</a></div>`;
+  r.hidden = false;
+  r.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+</script>
+</body>
+</html>
